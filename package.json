@@ -1,0 +1,28 @@
+{
+  "name": "designer-pilot",
+  "version": "1.0.0",
+  "description": "This is a pilot app to examine functionality and setup for a project management system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "designer",
+    "pilot",
+    "management",
+    "project",
+    "management"
+  ],
+  "author": "Alec",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "bootstrap": "^5.3.0-alpha1",
+    "connect-session-sequelize": "^7.0.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.18.2",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  }
+}
