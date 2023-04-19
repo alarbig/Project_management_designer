@@ -1,0 +1,25 @@
+{
+    "name": "designer-pilot",
+    "version": "1.0.0",
+    "private": true,
+    "description": "",
+    "proxy": "http://localhost:3001",
+    "scripts": {
+      "start": "node server.js",
+      "watch": "nodemon",
+      "seed": "node seeders/seed.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "bcrypt": "^4.0.1",
+      "express": "^4.17.2",
+      "mongoose": "^6.1.8",
+      "stripe": "^8.67.0"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.2"
+    }
+  }
+  
