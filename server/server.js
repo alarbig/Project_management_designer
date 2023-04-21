@@ -13,7 +13,8 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Define the database connection
-const sequelize = require('../server/config/connection')
+const sequelize = require('../server/config/connection');
+const { Organization } = require('./models');
 
 // Test the database connection
 sequelize.authenticate().then(() => {
@@ -21,6 +22,7 @@ sequelize.authenticate().then(() => {
 }).catch(error => {
   console.error('Unable to connect to the database:', error);
 });
+
 
 
 // Define a GET endpoint to fetch all users from the database
@@ -44,6 +46,25 @@ app.post('/users', (req, res) => {
   });
 });
 
+app.post('/organization', (req, res) => {
+  const { businessName, email, teamSize, industry, phone, address, website } = req.body;
+  Organization.create({ businessName, email, teamSize, industry, phone, address, website }).then(organization => {
+    res.json(organization);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({ message: 'Error creating user in the database.' });
+  });
+});
+
+app.get('/organization', (req, res) => {
+  Organization.findAll().then(organization => {
+    res.json(organization);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({ message: 'Error fetching organization from the database.' });
+  });
+});
+
 // Catch-all endpoint to serve the React app
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build/index.html'));
@@ -55,6 +76,12 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
+// Sync the model with the database
+sequelize.sync({ force: false }).then(() => {
+  console.log('Model synced');
+}).catch((error) => {
+  console.error('Error syncing model:', error);
+});
 
 // const express = require('express');
 // const bodyParser = require('body-parser');

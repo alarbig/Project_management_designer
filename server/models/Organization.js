@@ -12,8 +12,12 @@ Organization.init(
         },
         businessName: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
+            allowNull: true,
+            unique: true, 
+            references: {
+                model: 'user',
+                key: 'id'
+            }
         },
         email: {
             type: DataTypes.STRING,
@@ -23,6 +27,7 @@ Organization.init(
                 isEmail: true
             }
         },
+
         teamSize: {
             type: DataTypes.INTEGER,
             allowNull: true,
@@ -39,14 +44,14 @@ Organization.init(
         },
         phone: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [1]
             }
         },
         address: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [1]
             }
@@ -58,14 +63,14 @@ Organization.init(
                 len: [1]
             }
         },
-        team_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false, 
-            references: {
-                model: 'team',
-                key: 'id'
-            }
-        }
+        // team_id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: true, 
+        //     references: {
+        //         model: 'team',
+        //         key: 'id'
+        //     }
+        // }
 
     },
     {
