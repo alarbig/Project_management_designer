@@ -3,27 +3,40 @@ const Admin = require('./Admin');
 // const Project = require('./Project');
 const Organization = require('./Organization');
 
-User.hasOne(Organization, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE'
-    });
-
-Organization.belongsTo(User, {
+// Project belongs to many users
+Project.belongsToMany(User, {
+    through: 'UserProject',
+    foreignKey: 'project_id'
+  });
+  
+  // User belongs to many projects
+  User.belongsToMany(Project, {
+    through: 'UserProject',
     foreignKey: 'user_id'
-    });
-
-// Project.hasMany(Organization, {
-//     foreignKey: 'project_id',
-//     onDelete: 'CASCADE'
-//     });
-
-// Organization.belongsTo(Project, {
-//     foreignKey: 'project_id'
-//     });
-
-Admin.hasMany(Organization, {
-    foreignKey: 'admin_id',
+  });
+  
+  // Organization belongs to many users
+  Organization.belongsToMany(User, {
+    through: 'OrganizationUser',
+    foreignKey: 'organization_id'
+  });
+  
+  // User belongs to one organization
+  User.belongsTo(Organization, {
+    through: 'OrganizationUser',
+    foreignKey: 'user_id'
+  });
+  
+  // Organization has many projects
+  Organization.hasMany(Project, {
+    foreignKey: 'organization_id',
     onDelete: 'CASCADE'
-    });
+  });
+  
+  // Project belongs to one organization
+  Project.belongsTo(Organization, {
+    foreignKey: 'organization_id'
+  });
+  
 
 module.exports = { User, Admin, Organization };
