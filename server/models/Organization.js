@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const Project = require ('./Project')
 class Organization extends Model {}
 
 Organization.init(
@@ -10,6 +11,17 @@ Organization.init(
             primaryKey: true,
             autoIncrement: true
         },
+        organization_id: {
+            type: DataTypes.INTERGER,
+            allowNull:false,
+            primaryKey:true, 
+            references: {
+                model: 'Project, User',
+                key: 'id'
+            }
+
+        },
+
         businessName: {
             type: DataTypes.STRING,
             allowNull: true,
@@ -63,14 +75,6 @@ Organization.init(
                 len: [1]
             }
         },
-        // team_id: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: true, 
-        //     references: {
-        //         model: 'team',
-        //         key: 'id'
-        //     }
-        // }
 
     },
     {

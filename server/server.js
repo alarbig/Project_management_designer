@@ -15,6 +15,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 // Define the database connection
 const sequelize = require('../server/config/connection');
 const { Organization } = require('./models');
+const Project = require('./models/Project');
 
 // Test the database connection
 sequelize.authenticate().then(() => {
@@ -64,6 +65,70 @@ app.get('/organization', (req, res) => {
     res.status(500).json({ message: 'Error fetching organization from the database.' });
   });
 });
+
+app.post('/project', (req, res) => {
+  const { projectName, projectDescription, projectBudget, projectTimeline, projectStatus, projectType, projectLocation, projectImage } = req.body;
+  Project.create({ projectName, projectDescription, projectBudget, projectTimeline, projectStatus, projectType, projectLocation, projectImage }).then(project => {
+    res.json(project);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({ message: 'Error creating project in the database.' });
+  });
+});
+
+app.get('/project', (req, res) => {
+  Project.findAll().then(project => {
+    res.json(project);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({ message: 'Error fetching project from the database.' });
+  });
+});
+
+app.get('/project/:id', (req, res) => {
+  Project.findAll({
+    where: {
+      id: req.params.id
+    }
+  }).then(project => {
+    res.json(project);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({ message: 'Error fetching project from the database.' });
+  });
+});
+
+app.put('/project/:id', (req, res) => {
+  Project.update(req.body, {
+    where: {
+      id: req.params.id,
+      projectBudget: req.body.projectBudget,
+      projectTimeline: req.body.projectTimeline,
+      projectStatus: req.body.projectStatus,
+      projectDescription: req.body.projectDescription
+    }
+  }).then(project => {
+    res.json(project);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({ message: 'Error updating project in the database.' });
+  });
+});
+
+app.delete('/project/:id', (req, res) => {
+  Project.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(project => {
+    res.json(project);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({ message: 'Error deleting project in the database.' });
+  });
+});
+
+
 
 // Catch-all endpoint to serve the React app
 app.get('*', (req, res) => {

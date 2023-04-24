@@ -1,7 +1,7 @@
-const User = require('./User');
-const Admin = require('./Admin');
-// const Project = require('./Project');
-const Organization = require('./Organization');
+import User from './User';
+import Organization from './Organization';
+import Project from './Project';
+
 
 // Project belongs to many users
 Project.belongsToMany(User, {
@@ -37,6 +37,6 @@ Project.belongsToMany(User, {
   Project.belongsTo(Organization, {
     foreignKey: 'organization_id'
   });
-  
 
-module.exports = { User, Admin, Organization };
+  module.exports = { User, Organization, Project };
+
