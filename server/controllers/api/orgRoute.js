@@ -4,7 +4,7 @@ const { User, Organization, Project } = require('../../models');
 router.get ('/', async (req, res) => {
     try {
         const organizationData = await Organization.findAll({
-            include: [{ model: User }],
+            include: [{ model: User }, { model: Project }],
         });
         res.status(200).json(organizationData);
     } catch (err) {

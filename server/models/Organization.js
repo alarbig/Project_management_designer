@@ -11,25 +11,11 @@ Organization.init(
             primaryKey: true,
             autoIncrement: true
         },
-        organization_id: {
-            type: DataTypes.INTERGER,
-            allowNull:false,
-            primaryKey:true, 
-            references: {
-                model: 'Project, User',
-                key: 'id'
-            }
-
-        },
 
         businessName: {
             type: DataTypes.STRING,
             allowNull: true,
-            unique: true, 
-            references: {
-                model: 'user',
-                key: 'id'
-            }
+            unique: true,
         },
         email: {
             type: DataTypes.STRING,

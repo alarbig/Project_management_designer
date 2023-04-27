@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const { Sequelize } = require('sequelize');
 const bodyParser = require('body-parser');
-const User = require('../server/models/User');
+// const User = require('../server/models/User');
 
 const app = express();
 
@@ -14,8 +14,8 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Define the database connection
 const sequelize = require('../server/config/connection');
-const { Organization } = require('./models');
-const Project = require('./models/Project');
+const { Organization, User, Project } = require('./models');
+// const Project = require('./models/Project');
 
 // Test the database connection
 sequelize.authenticate().then(() => {
@@ -67,8 +67,8 @@ app.get('/organization', (req, res) => {
 });
 
 app.post('/project', (req, res) => {
-  const { projectName, projectDescription, projectBudget, projectTimeline, projectStatus, projectType, projectLocation, projectImage } = req.body;
-  Project.create({ projectName, projectDescription, projectBudget, projectTimeline, projectStatus, projectType, projectLocation, projectImage }).then(project => {
+  const { name, description, status, startDate, endDate, createdAt, createdBy, updatedAt, deletedAt, updatedBy, deletedBy } = req.body;
+  Project.create({ name, description, status, startDate, endDate, createdAt, createdBy, updatedAt, deletedAt, updatedBy, deletedBy }).then(project => {
     res.json(project);
   }).catch(error => {
     console.log(error);

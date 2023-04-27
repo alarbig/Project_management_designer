@@ -32,11 +32,11 @@ Project.init(
     },
     startDate: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: true
     },
     endDate: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: true
     },
     createdAt: {
         type: DataTypes.DATE,
@@ -44,7 +44,7 @@ Project.init(
     },
     updatedAt: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: true
     },
     deletedAt: {
         type: DataTypes.DATE,
@@ -56,22 +56,22 @@ Project.init(
     },
     updatedBy: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     deletedBy: {
         type: DataTypes.STRING,
         allowNull: true
     },
-    sequelize,
-        timestamps: true,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'project'
-
-}, 
     
+},
 {
-    // Other model options go here
+    sequelize,
+    timestamps: true,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'project'
 });
+
+
 
 module.exports = Project;

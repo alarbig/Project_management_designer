@@ -1,7 +1,6 @@
-import User from './User';
-import Organization from './Organization';
-import Project from './Project';
-
+const User = require('./User');
+const Organization = require('./Organization');
+const Project = require('./Project');
 
 // Project belongs to many users
 Project.belongsToMany(User, {
