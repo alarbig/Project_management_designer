@@ -1,0 +1,220 @@
+/* Mobile Styles */
+
+@media (max-width: 768px) {
+	body {
+		font-size: 16px;
+	}
+
+	header {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	nav {
+		width: 100%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	nav ul {
+		flex-direction: row;
+        list-style-type: none;
+    
+	}
+
+	nav li {
+		margin: 10px;
+        list-style-type: none;
+	}
+
+	.user-info {
+		margin-top: 20px;
+	}
+
+	.main {
+		padding: 20px;
+	}
+
+	.overview {
+		margin: 0;
+	}
+
+	.projects {
+		text-align: center;
+	}
+
+	table {
+		margin: auto;
+	}
+
+	table td, table th {
+		padding: 10px;
+	}
+
+	.cards {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.card {
+		width: 40%;
+		margin: 10px;
+	}
+
+	.card-info p {
+		font-size: 16px;
+	}
+
+	.card-info h2 {
+		font-size: 32px;
+	}
+
+	.status {
+		font-size: 14px;
+		padding: 4px;
+		border-radius: 4px;
+	}
+
+	.in-progress {
+		background-color: #ffc107;
+		color: #333;
+	}
+
+	.completed {
+		background-color: #28a745;
+		color: #fff;
+	}
+
+	.on-hold {
+		background-color: #dc3545;
+		color: #fff;
+	}
+}
+
+/* Desktop Styles */
+
+@media (min-width: 769px) {
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+        background-color: #bfb4d1;
+	}
+
+	nav {
+		display: flex;
+		align-items: center;
+        text-decoration: none;
+	}
+
+	nav ul {
+		display: flex;
+		flex-direction: row;
+		margin-right: 30px;
+	}
+
+	nav li {
+		margin-left: 20px;
+        list-style-type: none;
+	}
+
+	.user-info {
+		display: flex;
+		align-items: center;
+	}
+
+	.overview {
+		float: left;
+		margin-right: 50px;
+	}
+
+	.projects {
+		text-align: left;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin-top: 30px;
+	}
+
+	table td, table th {
+		padding: 15px;
+		border: 1px solid #ddd;
+		text-align: left;
+	}
+
+	.cards {
+		display: flex;
+		flex-direction: row;
+		margin-top: 30px;
+	}
+
+	.card {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding: 20px;
+		background-color: #fff;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		border-radius: 5px;
+        text-decoration: none;
+	}
+
+    .card:hover {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding: 20px;
+		background-color: bisque;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		border-radius: 5px;
+	}
+
+	.card i {
+		font-size: 48px;
+		color: #333;
+	}
+
+	.card-info {
+		margin-left: 20px;
+        
+	}
+
+   
+
+	.card-info p {
+		font-size: 18px;
+		color: #333;
+		margin-bottom: 5px;
+	}
+
+	.card-info h2 {
+		font-size: 36px;
+		color: #333;
+		margin: 0;
+	}
+
+	.status {
+		font-size: 16px;
+		padding: 6px 12px;
+		border-radius: 5px;
+    }
+
+}
+
+.in-progress {
+	background-color: #ffc107;
+	color: #333;
+}
+
+.completed {
+	background-color: #28a745;
+	color: #fff;
+}
+
+.on-hold {
+	background-color: #dc3545;
+	color: #fff;
+}

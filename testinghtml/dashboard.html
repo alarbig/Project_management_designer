@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Dashboard</title>
+	<link rel="stylesheet" href="dashboard.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="#">Dashboard</a></li>
+				<li><a href="#">Projects</a></li>
+				<li><a href="#">Tasks</a></li>
+				<li><a href="#">Messages</a></li>
+				<li><a href="#">Settings</a></li>
+			</ul>
+			<div class="user-info">
+				<img src="https://via.placeholder.com/50" alt="User avatar">
+				<p>Welcome, John Doe</p>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<section class="overview">
+			<h1>Overview</h1>
+			<div class="cards">
+				<a href="projectSelection.html" div class="card">
+					<i class="fas fa-project-diagram"></i>
+					<div class="card-info">
+						<p>Projects</p>
+						<h2>6</h2>
+					</div>
+				</a>
+				<div class="card">
+					<i class="fas fa-tasks"></i>
+					<div class="card-info">
+						<p>Tasks</p>
+						<h2>12</h2>
+					</div>
+				</div>
+				<div class="card">
+					<i class="fas fa-envelope"></i>
+					<div class="card-info">
+						<p>Messages</p>
+						<h2>3</h2>
+					</div>
+				</div>
+				<div class="card">
+					<i class="fas fa-clock"></i>
+					<div class="card-info">
+						<p>Upcoming Deadlines</p>
+						<h2>2</h2>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="projects">
+			<h1>Projects</h1>
+			<table>
+				<thead>
+					<tr>
+						<th>Project Name</th>
+						<th>Client Name</th>
+						<th>Status</th>
+						<th>Due Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Project 1</td>
+						<td>Client A</td>
+						<td><span class="status in-progress">In Progress</span></td>
+						<td>10/30/2023</td>
+					</tr>
+					<tr>
+						<td>Project 2</td>
+						<td>Client B</td>
+						<td><span class="status completed">Completed</span></td>
+						<td>11/15/2023</td>
+					</tr>
+					<tr>
+						<td>Project 3</td>
+						<td>Client C</td>
+						<td><span class="status on-hold">On Hold</span></td>
+						<td>12/01/2023</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2023 User Dashboard</p>
+	</footer>
+</body>
