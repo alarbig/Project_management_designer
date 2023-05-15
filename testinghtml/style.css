@@ -104,3 +104,6 @@
     border-top: 1px solid #ccc;
   }
   
+  table {
+    text-decoration: none;
+  }

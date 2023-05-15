@@ -103,9 +103,17 @@ app.put('/project/:id', (req, res) => {
     where: {
       id: req.params.id,
       projectBudget: req.body.projectBudget,
-      projectTimeline: req.body.projectTimeline,
-      projectStatus: req.body.projectStatus,
-      projectDescription: req.body.projectDescription
+      name: req.body.name, 
+      description: req.body.description,
+      status: req.body.status,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      createdAt: req.body.createdAt,
+      createdBy: req.body.createdBy,
+      updatedAt: req.body.updatedAt,
+      deletedAt: req.body.deletedAt,
+      updatedBy: req.body.updatedBy,
+      deletedBy: req.body.deletedBy
     }
   }).then(project => {
     res.json(project);
@@ -147,34 +155,4 @@ sequelize.sync({ force: false }).then(() => {
 }).catch((error) => {
   console.error('Error syncing model:', error);
 });
-
-// const express = require('express');
-// const bodyParser = require('body-parser');
-// const path = require('path');
-// const sequelize = require('./models/index');
-// const app = express();
-
-// // Configure middleware
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
-
-// // Serve the static files from the React app
-// app.use(express.static(path.join(__dirname, 'client/build')));
-
-// // Define routes for your API endpoints here
-// // ...
-
-// // Define a catch-all route for serving the React app
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname + '/client/build/index.html'));
-// });
-
-// // Sync the database and start the server
-// sequelize.sync().then(() => {
-//   app.listen(process.env.PORT || 3000, () => {
-//     console.log('Server started on port 3000!');
-//   });
-// }).catch(error => {
-//   console.log('Error syncing database: ', error);
-// });
 
