@@ -2,9 +2,12 @@ const express = require('express');
 const path = require('path');
 const { Sequelize } = require('sequelize');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 // const User = require('../server/models/User');
 
 const app = express();
+app.use(cors());
+
 
 // Configure body-parser middleware for parsing JSON data
 app.use(bodyParser.json());
