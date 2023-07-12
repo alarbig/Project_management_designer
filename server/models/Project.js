@@ -22,8 +22,17 @@ Project.init(
         type: DataTypes.STRING,
         allowNull: false
     },
+    clientName: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    requirements: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     description: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true
         // allowNull defaults to true
     },
     status: {
@@ -40,7 +49,7 @@ Project.init(
     },
     createdAt: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: true
     },
     updatedAt: {
         type: DataTypes.DATE,
@@ -52,7 +61,7 @@ Project.init(
     }, 
     createdBy: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     updatedBy: {
         type: DataTypes.STRING,
@@ -62,6 +71,22 @@ Project.init(
         type: DataTypes.STRING,
         allowNull: true
     },
+    assignedUsers: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    status: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    comments: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    imageLinks: {
+        type: DataTypes.STRING,
+        allowNull: true
+    }
     
 },
 {

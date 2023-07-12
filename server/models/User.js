@@ -29,9 +29,14 @@ User.init(
                 isEmail: true
             }
         },
+        role: {
+            type: DataTypes.ENUM, 
+            values: ['Developer', 'Designer', 'Project Manager', 'Other'],
+            allowNull: true,
+        },
         password: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [6]
             }

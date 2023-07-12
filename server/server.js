@@ -6,12 +6,11 @@ const cors = require('cors');
 // const User = require('../server/models/User');
 
 const app = express();
-app.use(cors());
 
 
 // Configure body-parser middleware for parsing JSON data
 app.use(bodyParser.json());
-
+app.use(cors());
 // Serve the static React files
 app.use(express.static(path.join(__dirname, 'client/build')));
 
@@ -70,14 +69,26 @@ app.get('/organization', (req, res) => {
 });
 
 app.post('/project', (req, res) => {
-  const { name, description, status, startDate, endDate, createdAt, createdBy, updatedAt, deletedAt, updatedBy, deletedBy } = req.body;
-  Project.create({ name, description, status, startDate, endDate, createdAt, createdBy, updatedAt, deletedAt, updatedBy, deletedBy }).then(project => {
-    res.json(project);
-  }).catch(error => {
-    console.log(error);
-    res.status(500).json({ message: 'Error creating project in the database.' });
-  });
+  const { name, client, requirements, startDate, endDate, assignedUsers, status, comments, imageLinks } = req.body;
+  Project.create({ name, client, requirements, startDate, endDate, assignedUsers, status, comments, imageLinks })
+    .then(project => {
+      res.json(project);
+    }).catch(error => {
+      console.log(error);
+      res.status(500).json({ message: 'Error creating project in the database.' });
+    });
 });
+
+
+// app.post('/project', (req, res) => {
+//   const { name, description, status, startDate, endDate, createdAt, createdBy, updatedAt, deletedAt, updatedBy, deletedBy } = req.body;
+//   Project.create({ name, description, status, startDate, endDate, createdAt, createdBy, updatedAt, deletedAt, updatedBy, deletedBy }).then(project => {
+//     res.json(project);
+//   }).catch(error => {
+//     console.log(error);
+//     res.status(500).json({ message: 'Error creating project in the database.' });
+//   });
+// });
 
 app.get('/project', (req, res) => {
   Project.findAll().then(project => {
