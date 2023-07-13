@@ -49,6 +49,37 @@ app.post('/users', (req, res) => {
   });
 });
 
+// app.post('/users/login', async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
+    
+//     // Find the user with the provided email
+//     const user = await User.findOne({ where: { email } });
+    
+//     if (!user) {
+//       // If the user is not found, return an error
+//       return res.status(400).json({ error: 'User not found' });
+//     }
+
+//     // If user is found, compare the provided password with the hashed password in the database
+//     const match = await bcrypt.compare(password, user.password);
+    
+//     if (!match) {
+//       // If the passwords don't match, return an error
+//       return res.status(400).json({ error: 'Invalid password' });
+//     }
+
+//     // If the passwords match, return the user (without the password!)
+//     const userWithoutPassword = { ...user.toJSON(), password: undefined };
+//     return res.json(userWithoutPassword);
+
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({ error: 'Error logging in' });
+//   }
+// });
+
+
 app.post('/organization', (req, res) => {
   const { businessName, email, teamSize, industry, phone, address, website } = req.body;
   Organization.create({ businessName, email, teamSize, industry, phone, address, website }).then(organization => {
@@ -69,8 +100,8 @@ app.get('/organization', (req, res) => {
 });
 
 app.post('/project', (req, res) => {
-  const { name, client, requirements, startDate, endDate, assignedUsers, status, comments, imageLinks } = req.body;
-  Project.create({ name, client, requirements, startDate, endDate, assignedUsers, status, comments, imageLinks })
+  const { name, clientName, requirements, startDate, endDate, assignedUsers, status, comments, imageLinks } = req.body;
+  Project.create({ name, clientName, requirements, startDate, endDate, assignedUsers, status, comments, imageLinks })
     .then(project => {
       res.json(project);
     }).catch(error => {
